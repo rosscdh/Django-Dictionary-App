@@ -1,0 +1,32 @@
+{% extends "base.html"%}
+{% load cache %}
+{% block content %}
+<div class="dict list_items grid_18">
+	<h3>Dictionary</h3>
+    <ul class="clearfix alphabet">
+        {% for key,value in alphabet %}
+            <li><a href="#{{ key }}"><strong>{{ key }}</strong></a></li>
+        {% endfor %}
+    </ul>
+    <ul>
+	{% if object_list %}
+        {% for key, value in object_list.items %}
+            <li>
+				<a name="{{ key }}"></a>
+				<h4 class="item">{{ key|upper }}</h4>
+				<ul>
+				{% for d in value %}
+					<li>
+						<strong>{{ d.term|title }}</strong>
+						{{ d.description|capfirst }}
+					</li>
+				{% endfor %}
+				</ul>
+			</li>
+        {% endfor %}
+	{% else %}
+		<li><strong>No records found</strong></li>
+	{% endif %}
+    </ul>
+</div>
+{% endblock %}
