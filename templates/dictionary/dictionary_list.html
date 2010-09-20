@@ -3,11 +3,13 @@
 {% block content %}
 <div class="dict list_items grid_18">
 	<h3>Dictionary</h3>
+	{% if alphabet %}
     <ul class="clearfix alphabet">
         {% for key,value in alphabet %}
             <li><a href="#{{ key }}"><strong>{{ key }}</strong></a></li>
         {% endfor %}
     </ul>
+	{% endif %}
     <ul>
 	{% if object_list %}
         {% for key, value in object_list.items %}
